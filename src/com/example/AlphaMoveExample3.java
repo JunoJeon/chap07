@@ -104,8 +104,8 @@ public class AlphaMoveExample3 {
 		
 		for(int i=0; i<10; i++) {
 			MoveTimerTask t = new MoveTimerTask();
-//			int speed = (int)(Math.random()*300+20);
-			timer.schedule(t, 0, 1000);	
+			int speed = (int)(Math.random()*300+20);
+			timer.schedule(t, 0, speed);	
 		}
 		
 		VT100.reset();

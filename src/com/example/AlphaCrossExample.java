@@ -3,6 +3,8 @@ package com.example;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.example.AlphaMoveExample3.Direction;
+
 import util.Alpha;
 import util.VT100;
 
@@ -40,12 +42,10 @@ public class AlphaCrossExample {
 	
 	static class CrossTimerTask extends TimerTask {
 		static int totalCount = 0;
-		int count = 0;
 		
 		public CrossTimerTask() {
 			totalCount++;
 		}
-		
 		AlphaCross alphaCross = new AlphaCross();
 		int random = (int)(Math.random()*4+1);
 		
@@ -68,28 +68,40 @@ public class AlphaCrossExample {
 				break;
 			}
 			
-			if(alphaCross.getLine()==10 && alphaCross.getColumn()==40) {
+//			if(alphaCross.getLine()==10 && alphaCross.getColumn()==40) {
+//				alphaCross.hide();
+//				cancel();
+//			}	else if (alphaCross.getLine()==1 && alphaCross.getColumn()==20) {
+//				alphaCross.hide();
+//				cancel();
+//			}	else if (alphaCross.getLine()==10 && alphaCross.getColumn()==1) {
+//				alphaCross.hide();
+//				cancel();
+//			}	else if (alphaCross.getLine()==20 && alphaCross.getColumn()==20) {
+//				alphaCross.hide();	
+//				cancel();
+//			}
+			if( alphaCross.getColumn()==40 || alphaCross.getLine()==1 ||
+					alphaCross.getColumn()==1 || alphaCross.getLine()==20) {
 				alphaCross.hide();
 				cancel();
-			}	else if (alphaCross.getLine()==1 && alphaCross.getColumn()==20) {
-				alphaCross.hide();
-				cancel();
-			}	else if (alphaCross.getLine()==10 && alphaCross.getColumn()==1) {
-				alphaCross.hide();
-				cancel();
-			}	else if (alphaCross.getLine()==20 && alphaCross.getColumn()==20) {
-				alphaCross.hide();
-				cancel();
+				totalCount--;
+			}
+			if(totalCount==0) {
+				VT100.reset();
+				VT100.cursorMove(21, 1);
+				System.out.println("Program End...");
+				timer.cancel();
 			}
 			
-			
 		}
+		
 	}
 	static Timer timer = new Timer();
 	
 	public static void main(String[] args) throws InterruptedException {
 		VT100.clearScreen();
-		for(int i=0; i<10; i++) {
+		for(int i=0; i<1000; i++) {
 			CrossTimerTask t = new CrossTimerTask();
 			Thread.sleep(50);
 			int speed = (int)(Math.random()*1000+20);
