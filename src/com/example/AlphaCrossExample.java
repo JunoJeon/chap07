@@ -8,7 +8,7 @@ import com.example.AlphaMoveExample3.Direction;
 import util.Alpha;
 import util.VT100;
 
-public class AlphaCrossExample {
+public class AlphaCrossExample {	//내가한 것
 	
 	static class AlphaCross extends Alpha {
 		public AlphaCross() {
@@ -38,9 +38,8 @@ public class AlphaCrossExample {
 		}
 	}
 	
-	
-	
 	static class CrossTimerTask extends TimerTask {
+		
 		static int totalCount = 0;
 		
 		public CrossTimerTask() {

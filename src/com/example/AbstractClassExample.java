@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.TimerTask;
+
 public class AbstractClassExample {
 	static abstract class Animal {
 		
@@ -32,6 +34,21 @@ public class AbstractClassExample {
 			System.out.println("야이 XX야");
 		}
 		
+	}
+	
+	static class A extends TimerTask {
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			
+		}
+	}
+	static class B extends TimerTask {
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			
+		}
 	}
 
 	public static void main(String[] args) {
